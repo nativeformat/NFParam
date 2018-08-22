@@ -1,0 +1,12 @@
+add_executable(
+  NFParamTests
+  NFParamTests.cpp)
+target_include_directories(
+  NFParamTests
+  PUBLIC
+  ${NFPARAM_INCLUDE_DIRECTORY})
+target_link_libraries(
+  NFParamTests
+  PUBLIC
+  NFParam
+  Catch2)
