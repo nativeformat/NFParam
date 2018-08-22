@@ -1,0 +1,3 @@
+# NFParam CI config
+'unit_tests':
+    - 'NFParamTests'
