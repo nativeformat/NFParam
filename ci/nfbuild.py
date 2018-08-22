@@ -156,7 +156,7 @@ class NFBuild(object):
 
         coverage_output = os.path.join(self.output_directory, 'code_coverage')
         genhtml_result = subprocess.call([
-            self.genhtml_binary,
+            'genhtml',
             filtered_cov_info,
             '-o',
             coverage_output])

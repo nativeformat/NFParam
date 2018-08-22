@@ -13,6 +13,7 @@ from nfbuild import NFBuild
 
 
 class NFBuildOSX(NFBuild):
+    clang_format_binary = 'clang-format'
     def __init__(self):
         super(self.__class__, self).__init__()
         self.project_file = os.path.join(
