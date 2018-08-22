@@ -30,11 +30,8 @@ class NFBuild(object):
         os.makedirs(self.build_directory)
         os.makedirs(self.output_directory)
 
-    def installVulcanDependencies(self):
-        self.installCmake()
-
     def installDependencies(self):
-        self.installVulcanDependencies()
+        pass
 
     def generateProject(self,
                         code_coverage=False,
