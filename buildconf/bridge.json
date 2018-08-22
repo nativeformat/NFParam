@@ -1,0 +1,21 @@
+{
+  "teamcity": {
+    "pull_request": {
+      "ids": [
+        "NFParam_Osx_Build",
+        "NFParam_IOS_Build",
+        "NFParam_Linux_Build",
+        "NFParam_Linux_AddressSanitizerLeakSanitizer"
+      ],
+      "personal": true,
+      "tip_merge": false
+    },
+    "push": {
+      "refs/heads/master": [
+        "NFParam_Osx_Build",
+        "NFParam_IOS_Build",
+        "NFParam_Linux_Build"
+      ]
+    }
+  }
+}
