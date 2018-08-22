@@ -7,6 +7,7 @@ set -e
 sudo apt-get install -y --no-install-recommends apt-utils \
   clang-format-3.8 \
   clang-3.8 \
+  git \
   libc++-dev \
   python-pip \
   python-virtualenv \
