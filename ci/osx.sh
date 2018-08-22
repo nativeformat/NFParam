@@ -22,9 +22,10 @@
 set -e
 
 # Install system dependencies
-brew install clang-format \
-  cmake \
-  ninja
+brew install clang-format
+brew install cmake
+brew install lcov
+brew install ninja
 
 # Set up virtualenv
 virtualenv nfparam_env

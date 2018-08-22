@@ -130,7 +130,7 @@ class NFBuild(object):
         
         # Run lcov on filtered info
         lcov_result = subprocess.call([
-            self.lcov_binary,
+            'lcov',
             '--directory',
             '.',
             '--base-directory',
@@ -145,7 +145,7 @@ class NFBuild(object):
 
         # Remove stdlib headers from files to check
         lcov_result = subprocess.call([
-            self.lcov_binary,
+            'lcov',
             '--remove',
             cov_info,
             '*/usr/include/c++/*',

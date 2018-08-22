@@ -27,7 +27,7 @@ class NFBuildOSX(NFBuild):
                         undefined_behaviour_sanitizer=False,
                         ios=False):
         cmake_call = [
-            self.cmake_binary,
+            'cmake',
             '..',
             '-GXcode']
         if code_coverage:

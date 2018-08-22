@@ -13,8 +13,6 @@ from nfbuild import NFBuild
 
 
 class NFBuildLinux(NFBuild):
-    clang_format_binary = 'clang-format-3.9'
-
     def __init__(self):
         super(self.__class__, self).__init__()
         self.project_file = os.path.join(
@@ -28,7 +26,7 @@ class NFBuildLinux(NFBuild):
                         undefined_behaviour_sanitizer=False,
                         ios=False):
         cmake_call = [
-            self.cmake_binary,
+            'cmake',
             '..',
             '-GUnix Makefiles']
         cmake_result = subprocess.call(cmake_call, cwd=self.build_directory)

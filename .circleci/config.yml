@@ -5,8 +5,6 @@ jobs:
       - image: ubuntu:trusty
     steps:
       - checkout
-      - run: git submodule sync
-      - run: git submodule update --init --recursive
       - run:
           name: Build with Clang on Linux
           command: sh ci/linux.sh build
@@ -20,9 +18,6 @@ jobs:
       - run:
           name: Build OSX
           command: sh ci/osx.sh build
-      - store_artifacts:
-          path: build/output/libNFDriver.zip
-          destination: libNFDriver.zip
 
 workflows:
   version: 2
