@@ -16,9 +16,7 @@ class NFBuildLinux(NFBuild):
     clang_format_binary = 'clang-format-4.0'
     def __init__(self):
         super(self.__class__, self).__init__()
-        self.project_file = os.path.join(
-            self.build_directory,
-            'NFParam.xcodeproj')
+        self.project_file = 'build.ninja'
 
     def generateProject(self,
                         code_coverage=False,
@@ -29,7 +27,7 @@ class NFBuildLinux(NFBuild):
         cmake_call = [
             'cmake',
             '..',
-            '-GUnix Makefiles']
+            '-GNinja']
         cmake_result = subprocess.call(cmake_call, cwd=self.build_directory)
         if cmake_result != 0:
             sys.exit(cmake_result)
@@ -42,6 +40,12 @@ class NFBuildLinux(NFBuild):
         return ''
 
     def buildTarget(self, target, sdk='linux', arch='x86_64'):
-        make_result = subprocess.call(['make'], cwd=self.build_directory)
-        if make_result != 0:
-            sys.exit(make_result)
+        result = subprocess.call([
+            'ninja',
+            '-C',
+            self.build_directory,
+            '-f',
+            self.project_file,
+            target])
+        if result != 0:
+            sys.exit(result)

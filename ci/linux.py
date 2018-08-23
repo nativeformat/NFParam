@@ -14,11 +14,10 @@ def main():
     buildOptions.addOption("lintCpp", "Lint CPP Files")
     buildOptions.addOption("lintCppWithInlineChange",
                            "Lint CPP Files and fix them")
-
+    buildOptions.addOption("unitTests", "Run Unit Tests")
     buildOptions.addOption("makeBuildDirectory",
                            "Wipe existing build directory")
     buildOptions.addOption("generateProject", "Regenerate xcode project")
-
     buildOptions.addOption("buildTargetLibrary", "Build Target: Library")
 
     buildOptions.setDefaultWorkflow("Empty workflow", [])
@@ -35,7 +34,8 @@ def main():
         'lintCpp',
         'makeBuildDirectory',
         'generateProject',
-        'buildTargetLibrary'
+        'buildTargetLibrary',
+        'unitTests'
     ])
 
     options = buildOptions.parseArgs()
@@ -67,6 +67,8 @@ def main():
     if buildOptions.checkOption(options, 'buildTargetLibrary'):
         nfbuild.buildTarget(library_target)
 
+    if buildOptions.checkOption(options, 'unitTests'):
+        nfbuild.runUnitTests()
 
 if __name__ == "__main__":
     main()
