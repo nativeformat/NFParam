@@ -60,8 +60,9 @@ float TargetAtTimeEvent::cumulativeValue(double start_time, double end_time, dou
   // \int_{t1}^{t2} T + (s - T)*exp(-\frac{x-s}{c})dt =
   // Tx - \frac{s-T}{c}exp(-\frac{x-s}{c}) |_{t1}^{t2}
   auto integral = [&](const double &time) {
-    return target * time - (start_value - target) / time_constant *
-                               std::exp(-1.0 * ((time - start_time) / time_constant));
+    auto exp_arg = -1.0 * (time - start_time) / time_constant;
+    auto exp_fac = (start_value - target) / time_constant;
+    return target * time - exp_fac * std::exp(exp_arg);
   };
 
   return integral(end_time) - integral(start_time) + start_value * (end_time - start_time);
