@@ -22,9 +22,9 @@
 set -e
 
 # Install system dependencies
-brew install clang-format \
-  cmake \
-  ninja
+HOMEBREW_BREWFILE=${PWD}/ci/Brewfile
+echo $HOMEBREW_BREWFILE
+brew bundle --file=$HOMEBREW_BREWFILE
 
 # Set up virtualenv
 virtualenv nfparam_env

@@ -43,3 +43,7 @@ project.xcconfig
 *.egg*
 *.pyc
 nfparam_env
+
+# Test output
+paramAutomation*
+
