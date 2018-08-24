@@ -14,9 +14,7 @@ A C++ library for defining and evaluating piecewise functions, inspired by the W
 - [x] 💻 OS X 10.11+
 - [x] 🐧 Ubuntu Trusty 14.04+
 
-## Develop
-
-### Dependencies
+## Installation
 CMake 3.5 or later is required to generate the build.
 ```shell
 brew install cmake
@@ -30,24 +28,17 @@ sudo apt-get install cmake
 ```
 add_subdirectory(NFParam)
 ``` 
-Alternatively, you can use the CMake generator of your choice to compile or develop NFParam as a standalone library.
-
-### For iOS/OSX
-Generate an Xcode project from the Cmake project like so:
-
-```shell
-$ mkdir build
-$ cd build
-$ cmake .. -GXcode
-```
+Alternatively, you can compile NFParam as a standalone library.
+The [ci build scripts](./ci) can be used to install all necessary dependencies, build the library, and run unit tests.
 
 ### For Linux
-Generate a Ninja project from the Cmake project like so:
-
 ```shell
-$ mkdir build
-$ cd build
-$ cmake .. -GNinja
+sh ci/linux.sh build
+```
+
+### For iOS/OSX
+```shell
+sh ci/osx.sh build
 ```
 
 ## Examples
