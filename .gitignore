@@ -28,6 +28,7 @@ project.xcworkspace
 *.xcuserstate
 *.xcscmblueprint
 .DS_Store
+*.swp
 
 ## Obj-C/Swift specific
 *.hmap
