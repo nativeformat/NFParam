@@ -20,6 +20,7 @@
  * under the License.
 '''
 
+import os
 import sys
 
 from nfbuildlinux import NFBuildLinux
