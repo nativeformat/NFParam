@@ -22,6 +22,7 @@
 
 #include <NFParam/ParamEvent.h>
 
+#include <memory>
 #include <vector>
 
 namespace nativeformat {
