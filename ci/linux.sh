@@ -6,7 +6,7 @@ set -e
 # Install system dependencies
 sudo apt-get -q update
 sudo apt-get install -y --no-install-recommends apt-utils \
-  clang-3.8 \
+  clang-3.9 \
   git \
   lcov \
   libc++-dev \
@@ -16,7 +16,8 @@ sudo apt-get install -y --no-install-recommends apt-utils \
   python-virtualenv \
   software-properties-common \
   unzip \
-  wget
+  wget \
+  clang-format-3.9
 
 # Extra repo for clang-format-4.0
 sudo add-apt-repository -y ppa:ubuntu-mozilla-security/ppa 
@@ -29,6 +30,7 @@ sudo apt-get install -y --no-install-recommends \
   clang-format-4.0 \
   gcc-4.9 \
   g++-4.9
+sudo apt-get install -y --reinstall binutils
 
 # Update submodules
 git submodule update --init --recursive
@@ -37,9 +39,6 @@ git submodule update --init --recursive
 wget --no-check-certificate https://cmake.org/files/v3.6/cmake-3.6.3-Linux-x86_64.sh
 chmod +x cmake-3.6.3-Linux-x86_64.sh
 sudo sh cmake-3.6.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir
-
-export CC=clang-3.8
-export CXX=clang++-3.8
 
 # Set up virtualenv
 virtualenv nfparam_env

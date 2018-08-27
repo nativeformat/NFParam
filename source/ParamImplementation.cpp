@@ -21,6 +21,7 @@
 #include "ParamImplementation.h"
 
 #include <cmath>
+#include <cstring>
 #include <sstream>
 
 namespace nativeformat {
