@@ -1,4 +1,24 @@
 #!/usr/bin/env python
+'''
+ * Copyright (c) 2018 Spotify AB.
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+'''
 
 import sys
 
@@ -16,6 +36,9 @@ def main():
     buildOptions.addOption("makeBuildDirectory",
                            "Wipe existing build directory")
     buildOptions.addOption("generateProject", "Regenerate xcode project")
+    buildOptions.addOption("buildTargetIphoneSimulator",
+                           "Build Target: iPhone Simulator")
+    buildOptions.addOption("buildTargetIphoneOS", "Build Target: iPhone OS")
 
     buildOptions.setDefaultWorkflow("Empty workflow", [])
 
@@ -30,13 +53,15 @@ def main():
         'lintCmake',
         'lintCpp',
         'makeBuildDirectory',
-        'generateProject'
+        'generateProject',
+        'buildTargetIphoneSimulator',
+        'buildTargetIphoneOS'
     ])
 
     options = buildOptions.parseArgs()
     buildOptions.verbosePrintBuildOptions(options)
 
-    library_target = 'NFHTTP'
+    library_target = 'NFParam'
     nfbuild = NFBuildOSX()
 
     if buildOptions.checkOption(options, 'installDependencies'):
@@ -56,7 +81,13 @@ def main():
     if buildOptions.checkOption(options, 'generateProject'):
         nfbuild.generateProject(ios=True)
 
-    targets = ['NFParamTests']
+    if buildOptions.checkOption(options, 'buildTargetIphoneSimulator'):
+        nfbuild.buildTarget(library_target,
+                            sdk='iphonesimulator',
+                            arch='x86_64')
+
+    if buildOptions.checkOption(options, 'buildTargetIphoneOS'):
+        nfbuild.buildTarget(library_target, sdk='iphoneos', arch='arm64')
 
 
 if __name__ == "__main__":
