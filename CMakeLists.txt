@@ -5,8 +5,11 @@ project(NFParam)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
   -Wno-deprecated-declarations \
-  -Wno-tautological-undefined-compare \
-  -stdlib=libc++")
+  -Wno-tautological-undefined-compare")
+
+if(LLVM_STDLIB)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
+endif()
 
 if(USE_ADDRESS_SANITIZER)
   message("Using Address & Leak Sanitizer")
