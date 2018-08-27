@@ -12,7 +12,13 @@ A C++ library for defining and evaluating piecewise functions, inspired by the W
 
 - [x] 📱 iOS 9.0+
 - [x] 💻 OS X 10.11+
-- [x] 🐧 Ubuntu Trusty 14.04+
+- [x] 🐧 Ubuntu Trusty 14.04+ (clang 3.9 or gcc 4.9)
+
+## Raison D'être :thought_balloon:
+When designing a cross platform player that could be used for complex mixing and effects, we required a library that worked in the same way that the Web Audio API [AudioParam](https://webaudio.github.io/web-audio-api/#AudioParam) worked but on none web based platforms. This led to the creation of this library, which is not only able to emulate the [AudioParam](https://webaudio.github.io/web-audio-api/#AudioParam) library but can also handle seeks into the centre of a function being evaluated due to its architecture not being a state machine. In addition to supporting everything [AudioParam](https://webaudio.github.io/web-audio-api/#AudioParam) supports, we have also added in some extra goodies such as `smoothedValueForTimeRange` and `cumulativeValueForTimeRange`.
+
+## Architecture :triangular_ruler:
+`NFParam` is designed as a C++11 interface to define a control curve and interact with it in real time. The API allows you to create a parameter and then begin to add control curves to execute at specific times. The library is thread safe and can be written or read from any thread. The system works by having a list of events, doing a binary search on that list to find the correct function to execute, then executing that function on the current time being requested.
 
 ## Installation
 CMake 3.5 or later is required to generate the build.
@@ -122,3 +128,17 @@ sh plot.sh ../build/source/test/Debug/paramAutomation.txt out.png
 ```
 ![](resources/paramAutomationExpected.png?raw=true)
 
+## Contributing :mailbox_with_mail:
+Contributions are welcomed, have a look at the [CONTRIBUTING.md](CONTRIBUTING.md) document for more information.
+
+## License :memo:
+The project is available under the [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) license.
+
+### Acknowledgements
+- Icon in readme banner is “[Settings](https://thenounproject.com/search/?q=parameter&i=1477820)” by Bharat from the Noun Project.
+
+#### Contributors
+* Julia Cox
+* Justin Sarma
+* David Rubinstein
+* Will Sackfield
