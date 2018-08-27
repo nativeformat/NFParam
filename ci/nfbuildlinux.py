@@ -43,11 +43,16 @@ class NFBuildLinux(NFBuild):
                         address_sanitizer=False,
                         thread_sanitizer=False,
                         undefined_behaviour_sanitizer=False,
-                        ios=False):
+                        ios=False,
+                        gcc=False):
         cmake_call = [
             'cmake',
             '..',
             '-GNinja']
+        if gcc:
+            cmake_call.extend(['-DLLVM_STDLIB=0'])
+        else:
+            cmake_call.extend(['-DLLVM_STDLIB=1'])
         cmake_result = subprocess.call(cmake_call, cwd=self.build_directory)
         if cmake_result != 0:
             sys.exit(cmake_result)

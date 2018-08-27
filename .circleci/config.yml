@@ -7,7 +7,15 @@ jobs:
       - checkout
       - run:
           name: Build with Clang on Linux
-          command: sh ci/linux.sh build
+          command: sh ci/linux.sh clang_build
+  buildlinuxgcc:
+    docker:
+      - image: ubuntu:trusty
+    steps:
+      - checkout
+      - run:
+          name: Build Linux with gcc
+          command: sh ci/linux.sh gcc_build
   buildmac:
     macos:
       xcode: "9.0"
@@ -32,5 +40,6 @@ workflows:
   build:
     jobs:
       - buildlinuxclang
+      - buildlinuxgcc
       - buildmac
       - buildmacios
