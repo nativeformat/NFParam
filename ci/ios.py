@@ -39,6 +39,7 @@ def main():
     buildOptions.addOption("buildTargetIphoneSimulator",
                            "Build Target: iPhone Simulator")
     buildOptions.addOption("buildTargetIphoneOS", "Build Target: iPhone OS")
+    buildOptions.addOption("packageArtifacts", "Package the artifacts produced by the build")
 
     buildOptions.setDefaultWorkflow("Empty workflow", [])
 
@@ -55,7 +56,8 @@ def main():
         'makeBuildDirectory',
         'generateProject',
         'buildTargetIphoneSimulator',
-        'buildTargetIphoneOS'
+        'buildTargetIphoneOS',
+        'packageArtifacts'
     ])
 
     options = buildOptions.parseArgs()
@@ -88,6 +90,8 @@ def main():
 
     if buildOptions.checkOption(options, 'buildTargetIphoneOS'):
         nfbuild.buildTarget(library_target, sdk='iphoneos', arch='arm64')
+    if buildOptions.checkOption(options, "packageArtifacts"):
+        nfbuild.packageArtifacts()
 
 
 if __name__ == "__main__":
