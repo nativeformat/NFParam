@@ -3,12 +3,11 @@ cmake_minimum_required(VERSION 3.5)
 project(NFParam)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
-  -Wno-deprecated-declarations \
-  -Wno-tautological-undefined-compare")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
 
 if(LLVM_STDLIB)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ \
+  -Wno-tautological-undefined-compare")
 endif()
 
 if(USE_ADDRESS_SANITIZER)
