@@ -6,7 +6,7 @@ set -e
 # Install system dependencies
 sudo apt-get -q update
 sudo apt-get install -y --no-install-recommends apt-utils \
-  clang-3.8 \
+  clang-3.9 \
   git \
   lcov \
   libc++-dev \
@@ -16,7 +16,8 @@ sudo apt-get install -y --no-install-recommends apt-utils \
   python-virtualenv \
   software-properties-common \
   unzip \
-  wget
+  wget \
+  clang-format-3.9
 
 # Extra repo for clang-format-4.0
 sudo add-apt-repository -y ppa:ubuntu-mozilla-security/ppa 
