@@ -42,6 +42,7 @@ def main():
     buildOptions.addOption("buildTargetLibrary", "Build Target: Library")
     buildOptions.addOption("gnuToolchain", "Build with gcc and libstdc++")
     buildOptions.addOption("llvmToolchain", "Build with clang and libc++")
+    buildOptions.addOption("packageArtifacts", "Package the binary artifacts")
 
     buildOptions.setDefaultWorkflow("Empty workflow", [])
 
@@ -59,7 +60,8 @@ def main():
         'makeBuildDirectory',
         'generateProject',
         'buildTargetLibrary',
-        'unitTests'
+        'unitTests',
+        'packageArtifacts'
     ])
 
     buildOptions.addWorkflow("gcc_build", "Production Build", [
@@ -70,7 +72,8 @@ def main():
         'makeBuildDirectory',
         'generateProject',
         'buildTargetLibrary',
-        'unitTests'
+        'unitTests',
+        'packageArtifacts'
     ])
 
     options = buildOptions.parseArgs()
@@ -113,6 +116,8 @@ def main():
 
     if buildOptions.checkOption(options, 'unitTests'):
         nfbuild.runUnitTests()
+    if buildOptions.checkOption(options, 'packageArtifacts'):
+        nfbuild.packageArtifacts()
 
 if __name__ == "__main__":
     main()

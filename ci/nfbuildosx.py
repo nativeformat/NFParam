@@ -86,3 +86,23 @@ class NFBuildOSX(NFBuild):
                 full_target_file = os.path.join(root, filename)
                 return full_target_file
         return ''
+
+    def packageArtifacts(self):
+        lib_name = 'libNFParam.a'
+        output_folder = os.path.join(self.build_directory, 'output')
+        artifacts_folder = os.path.join(output_folder, 'NFParam')
+        shutil.copytree('include', os.path.join(artifacts_folder, 'include'))
+        source_folder = os.path.join(self.build_directory, 'source')
+        lib_matches = self.find_file(source_folder, lib_name)
+        if not self.android:
+            lipo_command = ['lipo', '-create']
+            for lib_match in lib_matches:
+                lipo_command.append(lib_match)
+            lipo_command.extend(['-output', os.path.join(artifacts_folder, lib_name)])
+            lipo_result = subprocess.call(lipo_command)
+            if lipo_result != 0:
+                sys.exit(lipo_result)
+        else:
+            shutil.copyfile(lib_matches[0], os.path.join(artifacts_folder, lib_name))
+        output_zip = os.path.join(output_folder, 'libNFParam.zip')
+        self.make_archive(artifacts_folder, output_zip)

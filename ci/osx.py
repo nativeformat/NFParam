@@ -30,7 +30,7 @@ def main():
     buildOptions = BuildOptions()
     buildOptions.addOption("debug", "Enable Debug Mode")
     buildOptions.addOption("installDependencies", "Install dependencies")
-
+    buildOptions.addOption("packageArtifacts", "Package the binary artifacts")
     buildOptions.addOption("lintCmake", "Lint cmake files")
     buildOptions.addOption("lintCpp", "Lint CPP Files")
     buildOptions.addOption("lintCppWithInlineChange",
@@ -73,7 +73,8 @@ def main():
         'makeBuildDirectory',
         'generateProject',
         'buildTargetLibrary',
-        'unitTests'
+        'unitTests',
+        'packageArtifacts'
     ])
 
     buildOptions.addWorkflow("code_coverage", "Collect code coverage", [
@@ -124,6 +125,8 @@ def main():
 
     if buildOptions.checkOption(options, 'codeCoverage'):
         nfbuild.collectCodeCoverage()
+    if buildOptions.checkOption(options, 'packageArtifacts'):
+        nfbuild.packageArtifacts()
 
 if __name__ == "__main__":
     main()
