@@ -138,7 +138,7 @@ The project is available under the [Apache 2.0](http://www.apache.org/licenses/L
 - Icon in readme banner is “[Settings](https://thenounproject.com/search/?q=parameter&i=1477820)” by Bharat from the Noun Project.
 
 #### Contributors
-* Julia Cox
-* Justin Sarma
-* David Rubinstein
-* Will Sackfield
+* [Julia Cox](https://github.com/astrocox)
+* [Justin Sarma](https://github.com/jsarma)
+* [David Rubinstein](https://github.com/drubinstein)
+* [Will Sackfield](https://github.com/8W9aG)
