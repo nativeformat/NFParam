@@ -14,6 +14,8 @@ A C++ library for defining and evaluating piecewise functions, inspired by the W
 - [x] 💻 OS X 10.11+
 - [x] 🐧 Ubuntu Trusty 14.04+ (clang 3.9 or gcc 4.9)
 
+Developed at Spotify 2019-2022, Discontinued and handed over to new maintainers January 2023
+
 ## Raison D'être :thought_balloon:
 When designing a cross platform player that could be used for complex mixing and effects, we required a library that worked in the same way that the Web Audio API [AudioParam](https://webaudio.github.io/web-audio-api/#AudioParam) worked but on none web based platforms. This led to the creation of this library, which is not only able to emulate the [AudioParam](https://webaudio.github.io/web-audio-api/#AudioParam) library but can also handle seeks into the centre of a function being evaluated due to its architecture not being a state machine. In addition to supporting everything [AudioParam](https://webaudio.github.io/web-audio-api/#AudioParam) supports, we have also added in some extra goodies such as `smoothedValueForTimeRange` and `cumulativeValueForTimeRange`.
 
